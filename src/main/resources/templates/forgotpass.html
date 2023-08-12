@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset = "ISO-8859-1" />
+      <link href = "css/style.css" rel = "stylesheet"/>
+      <title>Forget Password?</title>
+   </head>
+   <body>
+	 <div class="parent_log">
+		 <div class="log">
+			 <h1>Update Password</h1>
+			 <form action="user/resetpass" method="post" onsubmit="return validateForm()">
+			 <div>
+				   <input id="email" type='text'name="email" placeholder="Enter email">
+		     </div>
+		     <div>
+				   <input id="pass" type='password' name="password" placeholder="Enter Password">
+		   	 </div>
+		   	 <div>
+				   <input id="cpass" type='password'  placeholder="Confirm Password">
+		   	 </div>
+		   	 <div>
+			   <button id="lbut" type="submit">Reset </button>
+		     </div>
+		     </form>
+		     <a href="http://localhost:8080/" id="lanchor">Back to login Page</a>
+		 </div>
+	 </div>
+
+   </body>
+   <script>
+	    function validateForm() {
+		   let pass = document.getElementById('pass').value;
+		   let cpass = document.getElementById('cpass').value;
+
+		   if (pass !== cpass) {
+			   alert("Enter correct password");
+			   return false; 
+		   }
+		   return true;
+	   }
+   </script>
+
+	   
+</html>

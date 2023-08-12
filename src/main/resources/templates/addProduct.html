@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset = "ISO-8859-1" />
+      <link href = "css/style.css" rel = "stylesheet"/>
+      <title>Add a Product</title>
+   </head>
+   <body>
+	   <nav>
+		   <div class="head">
+			   <p>Home</p>
+			   <p>About</p>
+			   <p>Services</p>
+			   <p>Contact</p>
+			   <p id="name"></p>
+	          <p><button onclick="loggingout()" id="logout">Logout</button></p>
+			   
+		   </div>
+	   </nav>
+   <div class="parent_post">
+	   <div class="post">
+	    
+			   <h1 class="emp">Enter Product's Data</h1>
+	   	  <form id="myForm" action="/demo/add" method="post">
+			   <div>
+				   <input id="nam" type='text'name="name" placeholder="Enter Product's name">
+			   </div>
+			   <div>
+				   <input id="quan" type='text' name="quantity" placeholder="Enter Product's quantity">
+			   </div>
+			   <div>
+				   <input id="price" type='text' name="price" placeholder="Enter Product's price">
+			   </div>
+			   <div>
+			   <button id="postbu" type="submit">Click</button>
+			   </div>
+		  </form>
+	   </div>
+   </div>
+
+   </body>
+   <script>
+	   let e = localStorage.getItem('email');
+	     function loggingout(){
+			
+		  fetch('http://localhost:8080/user/logout', {
+		    method: 'POST',
+		    headers: {
+		      'Content-Type': 'application/x-www-form-urlencoded',
+		    },
+		    body: 'email=' + encodeURIComponent(e),
+		  })
+		    .then(response => response.text())
+		    .then(data => {
+		      console.log(data); 
+		      window.location.href="http://localhost:8080/"
+		    })
+		    .catch(error => {
+		      console.error('Error:', error);
+		    });
+		}
+		document.getElementById('name').innerHTML=e;
+   </script>
+	   
+</html>

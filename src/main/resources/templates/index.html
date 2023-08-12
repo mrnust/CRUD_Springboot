@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset = "ISO-8859-1" />
+      <link href = "css/style.css" rel = "stylesheet"/>
+      <title>Spring Boot Application</title>
+   </head>
+   <body>
+	   <nav>
+		   <div class="head">
+			   <p>Home</p>
+			   <p>About</p>
+			   <p>Services</p>
+			   <p>Contact</p>
+			   <p id="name"></p>
+			   <p><button onclick="loggingout()" id="logout">Logout</button></p>
+			   
+			 <!--  <div onclick="func()" class="ham">
+				   <div></div>
+				   <div></div>
+				   <div></div>
+			   </div>
+		   </div>-->
+	   </nav>
+	   
+	   <div id="drop-down">
+		   	<p>MOre</p>
+	   		<p>Blog</p>
+	   		<p>Support</p>
+	   </div>
+	  
+	 
+		  <button class="adding_product" onclick="clicked()" >Add Products</button>
+	  
+	   
+	   <h1 style="text-align: center;margin-top: 20px;">Product List</h1>
+
+    <table id="productTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Action</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="productTableBody">
+            <!-- The table rows will be dynamically generated using JavaScript -->
+        </tbody>
+    </table>
+   
+	   <footer>
+		   <p>CopyRight Made by Rayyan thyme tutorial</p>
+	   </footer>
+
+   </body>
+   <script th:inline="javascript">
+	   let b="true";
+	   func=()=>{
+		   if(b=="true"){
+		   let drop=document.getElementById('drop-down');
+		   drop.style.display="block";
+		   drop.style.color="red";
+		   b="false";
+		   }
+		   else if(b=="false"){
+		   let drop=document.getElementById('drop-down');
+		   drop.style.display="none";
+		   b="true";
+		   }
+
+	   }
+	 
+    function clicked(){
+		window.location.href='/addProduct';
+	}
+	fetch('demo/all')
+          .then(response => response.json())
+          .then(data => {
+            const tableBody = document.getElementById('productTableBody');
+           
+            data.forEach(product => {
+              const row = document.createElement('tr');
+
+              const idCell = document.createElement('td');
+              idCell.textContent = product.id;
+              row.appendChild(idCell);
+
+              const nameCell = document.createElement('td');
+              nameCell.textContent = product.name;
+              row.appendChild(nameCell);
+
+              const qunCell = document.createElement('td');
+              qunCell.textContent = product.quantity;
+              row.appendChild(qunCell);
+              
+              const prCell = document.createElement('td');
+              prCell.textContent = product.price;
+              row.appendChild(prCell);
+			  
+			    const updateButtonCell = document.createElement('td');
+		      const updateButton = document.createElement('button');
+		      updateButton.setAttribute('id','tup');
+		      updateButton.textContent = 'Update';
+		      updateButton.addEventListener('click', () => {
+		        const productId = product.id;
+		        // Perform the update operation with the productId
+		        console.log(product.name);
+		         console.log(product.quantity);
+		         console.log(product.price);
+		        console.log('Update clicked for product ID:', productId);
+		        window.location.href="/updateProduct?id="+productId +"&name="+product.name+"&quantity="+product.quantity+"&price="+product.price;
+		       
+		      });
+		      updateButtonCell.appendChild(updateButton);
+		      row.appendChild(updateButtonCell);
+		
+		      const deleteButtonCell = document.createElement('td');
+		      const deleteButton = document.createElement('button');
+		      deleteButton.setAttribute('id','tdel');
+		      deleteButton.textContent = 'Delete';
+		      deleteButton.addEventListener('click', () => {
+		        const productId = product.id;
+		        // Perform the delete operation with the productId
+		        window.location.href="/deleteProduct?id="+productId;
+		        console.log('Delete clicked for product ID:', productId);
+		      
+		      });
+      deleteButtonCell.appendChild(deleteButton);
+      row.appendChild(deleteButtonCell);
+      
+              tableBody.appendChild(row);
+            });
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+          let e = localStorage.getItem('email');
+	    function loggingout(){
+			
+		  fetch('http://localhost:8080/user/logout', {
+		    method: 'POST',
+		    headers: {
+		      'Content-Type': 'application/x-www-form-urlencoded',
+		    },
+		    body: 'email=' + encodeURIComponent(e),
+		  })
+		    .then(response => response.text())
+		    .then(data => {
+		      console.log(data); 
+		      window.location.href="http://localhost:8080/"
+		    })
+		    .catch(error => {
+		      console.error('Error:', error);
+		    });
+		}
+		document.getElementById('name').innerHTML=e;
+	 
+   </script>
+	   
+</html>

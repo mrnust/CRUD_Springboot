@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset = "ISO-8859-1" />
+      <link href = "css/style.css" rel = "stylesheet"/>
+      <title>Delete Product</title>
+   </head>
+   <body>
+	   <nav>
+		   <div class="head">
+			   <p>Home</p>
+			   <p>About</p>
+			   <p>Services</p>
+			   <p>Contact</p>
+			   <p id="name"></p>
+			   <p><button onclick="loggingout()" id="logout">Logout</button></p>
+		   </div>
+	   </nav>
+	  
+	 <div class="parent_delete">  
+	   <div class="delete">
+		   <h1>Delete the record of a Product</h1>
+		   <form id="deleteForm"  method="post">
+		   <div>
+				   <input id="delid" type'text' placeholder="Enter Product's Id" readonly>
+		   </div>
+		   <input type="hidden" name="_method" value="DELETE">
+		   <div>
+		   <button type="button" onclick="submitForm()" >Click</button>
+		   </div>
+		   </form>
+	   </div>
+	</div>   
+
+   </body>
+   <script th:inline="javascript">
+	   const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const productId = urlParams.get('id');
+
+      if (productId) {
+         document.getElementById('delid').value = productId;
+      }
+	    function submitForm() {
+        var productId = document.getElementById('delid').value;
+        productId.value="";
+        console.log(productId)
+        var deleteUrl = "demo/delete/" + encodeURIComponent(productId);
+
+        var form = document.getElementById("deleteForm");
+        form.action = deleteUrl;
+        form.submit();
+    }
+    let e = localStorage.getItem('email');
+   function loggingout(){
+			
+		  fetch('http://localhost:8080/user/logout', {
+		    method: 'POST',
+		    headers: {
+		      'Content-Type': 'application/x-www-form-urlencoded',
+		    },
+		    body: 'email=' + encodeURIComponent(e),
+		  })
+		    .then(response => response.text())
+		    .then(data => {
+		      console.log(data); 
+		      window.location.href="http://localhost:8080/"
+		    })
+		    .catch(error => {
+		      console.error('Error:', error);
+		    });
+		}
+		
+		document.getElementById('name').innerHTML=e;
+	    
+	 
+   </script>
+	   
+</html>

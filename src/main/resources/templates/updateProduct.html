@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset = "ISO-8859-1" />
+      <link href = "css/style.css" rel = "stylesheet"/>
+      <title>Update Product</title>
+   </head>
+   <body>
+	   <nav>
+		   <div class="head">
+			   <p>Home</p>
+			   <p>About</p>
+			   <p>Services</p>
+			   <p>Contact</p>
+			   <p id="name"></p>
+			   <p><button onclick="loggingout()" id="logout">Logout</button></p>
+		   </div>
+	   </nav>
+	   
+	  
+	  
+	   <div class="parent_put">
+	    <div class="put">
+		   <h1>Update the record of a Product</h1>
+	   <form id="updateForm"  method="post">
+		   <div>
+				   <input id="upid" type'text' placeholder="Enter Product's Id" readonly>
+		   </div>
+		   <div>
+				   <input id="upname" type'text' placeholder="Enter Product's Name">
+		   </div>
+		   <div>
+				   <input id="upq" type'text' placeholder="Enter Product's Quantity">
+		   </div>
+		   <div>
+				   <input id="upp" type'text' placeholder="Enter Product's Price">
+		   </div>
+		   <input type="hidden" name="_method" value="PUT">
+		   <div>
+		   <button type="button" onclick="submitUpdateForm()" >Click</button>
+		   </div>
+	   </form>
+	   </div>
+	   
+	  </div> 
+	  
+
+   </body>
+   <script th:inline="javascript">
+	   const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const productId = urlParams.get('id');
+	const productname = urlParams.get('name');
+	const productquan = urlParams.get('quantity');
+	const productprice = urlParams.get('price');
+      if (productId) {
+         document.getElementById('upid').value = productId;
+      }
+      document.getElementById('upname').value = productname;
+      document.getElementById('upq').value = productquan;
+       document.getElementById('upp').value = productprice;
+   function submitUpdateForm(){
+		let id = document.getElementById('upid').value;
+    let name = document.getElementById('upname').value;
+    let quan = document.getElementById('upq').value;
+    let price = document.getElementById('upp').value;
+    name.value="";
+    quan.value="";
+    id.value="";
+    price.value="";
+    let updateUrl = "demo/update/" + encodeURIComponent(id);
+    
+    let form = document.getElementById("updateForm");
+    form.setAttribute("action", updateUrl);
+    
+    let nameField = document.createElement("input");
+    nameField.setAttribute("type", "hidden");
+    nameField.setAttribute("name", "name");
+    nameField.setAttribute("value", name);
+    
+    let quantityField = document.createElement("input");
+    quantityField.setAttribute("type", "hidden");
+    quantityField.setAttribute("name", "quantity");
+    quantityField.setAttribute("value", quan);
+    
+    let priceField = document.createElement("input");
+    priceField.setAttribute("type", "hidden");
+    priceField.setAttribute("name", "price");
+    priceField.setAttribute("value", price);
+    
+    form.appendChild(nameField);
+    form.appendChild(quantityField);
+    form.appendChild(priceField);
+    
+    form.submit();
+		
+	} 
+	let e = localStorage.getItem('email');
+	  function loggingout(){
+			
+		  fetch('http://localhost:8080/user/logout', {
+		    method: 'POST',
+		    headers: {
+		      'Content-Type': 'application/x-www-form-urlencoded',
+		    },
+		    body: 'email=' + encodeURIComponent(e),
+		  })
+		    .then(response => response.text())
+		    .then(data => {
+		      console.log(data); 
+		      window.location.href="http://localhost:8080/"
+		    })
+		    .catch(error => {
+		      console.error('Error:', error);
+		    });
+		}
+		
+		document.getElementById('name').innerHTML=e;
+	   
+   </script>
+	   
+</html>

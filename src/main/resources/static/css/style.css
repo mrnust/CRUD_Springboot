@@ -1,0 +1,361 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+.head{
+	background-color: black;
+	color:white;
+	display:flex;
+}
+.head>p{
+	margin:20px 30px;
+	color: white;
+}
+.boxes{
+	display: flex;
+	margin-top: 50px;
+	justify-content: center;
+	align-items: center;
+}
+.box{
+	background-color: grey;
+	color: white;
+	border: 2px solid black;
+	margin: 5px 20px;
+	width:250px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 50px;
+}
+.box>p{
+	margin-top: 10px;
+}
+.box>button{
+	margin-top: 10px;
+}
+
+.layout{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.service{
+	margin-top: 60px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 2px solid black;
+	width: 350px;
+	padding: 30px;
+}
+.service>p{
+	margin-top: 10px;
+}
+.service>button{
+	margin-top: 10px;
+}
+footer{
+	background-color: black;
+	color: white;
+	height: 40px;
+	margin-top: 50px;
+}
+footer>p{
+	text-align: center;
+}
+.ham{
+	background-color: black;
+	border: 1px solid white;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-left: 500px;
+    height: 40px;
+    margin-top:4px;
+    padding: 3px;
+}
+.ham>div{
+	background-color: gray;
+	width: 43px;
+	height: 5px;
+	margin-top: 4px;
+}
+#drop-down {
+	display: none ;
+	background-color: grey;
+	padding: 5px;
+}
+#drop-down>p{
+	color: red;
+	font-size: 15px;
+	margin-top: 2px;
+}
+.parent_post{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.post{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 100px;
+	padding: 10px;
+	box-shadow: 5px 5px 5px 5px grey;
+	border: 1px solid black;
+	padding: 30px;
+}
+.post>form{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.emp{
+	color: black;
+}
+.post>form>div{
+	margin-top: 10px;
+}
+.post>form>div>input{
+	width: 450px;
+	height: 40px;
+	padding: 5px;
+}
+.post>form>div>button{
+	width: 200px;
+	height: 35px;
+	border-radius: 10px;
+	background-color: cornflowerblue;
+	cursor: pointer;
+	padding: 5px;
+	color: white;
+	border: 1px solid cornflowerblue;
+}
+.post>form>div>button:hover{
+	background-color: transparent;
+	color: black;
+}
+.parent_delete{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.delete{
+	margin-top: 100px;
+	box-shadow:5px 5px 5px 5px grey ;
+	border: 1px solid black;
+	padding: 20px;
+}
+.delete>form{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.delete>h1{
+	text-align: center;
+}
+.delete>form>div>input{
+	width: 500px;
+	height: 40px;
+	padding: 5px;
+}
+.delete>form>div>button{
+	width: 200px;
+	height: 35px;
+	border-radius: 10px;
+	margin-top: 10px;
+	background-color: cornflowerblue;
+	cursor: pointer;
+	padding: 5px;
+	color: white;
+	border: 1px solid cornflowerblue;
+}
+.delete>form>div>button:hover{
+	background-color: transparent;
+	color: black;
+}
+
+.parent_put{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.put{
+	margin-top: 100px;
+	box-shadow: 5px 5px 5px 5px grey;
+	padding: 20px;
+	border: 1px solid black;
+}
+.put>form{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.put>h1{
+	text-align: center;
+}
+.put>form>div>input{
+	width: 500px;
+	height: 40px;
+	padding: 5px;
+	margin-top: 5px;
+}
+.put>form>div>button{
+	width: 200px;
+	height: 35px;
+	border-radius: 10px;
+	margin-top: 10px;
+	background-color: cornflowerblue;
+	cursor: pointer;
+	padding: 5px;
+	color: white;
+	border: 1px solid cornflowerblue;
+}
+.put>form>div>button:hover{
+	background-color: transparent;
+	color: black;
+}
+
+table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            margin-top: 2px;
+        }
+
+.adding_product{
+	width: 200px;
+	height: 35px;
+	background-color: cornflowerblue;
+	cursor: pointer;
+	padding: 5px;
+	color: white;
+	border: 1px solid cornflowerblue;
+	margin:10px 15px;
+}
+.adding_product:hover{
+	background-color: transparent;
+	color: black;
+}
+#tup{
+	width: 80px;
+	height: 35px;
+	background-color: cornflowerblue;
+	cursor: pointer;
+	padding: 5px;
+	color: white;
+	border: 1px solid cornflowerblue;
+	margin:10px 15px;
+}
+#tdel{
+	width: 80px;
+	height: 35px;
+	background-color: cornflowerblue;
+	cursor: pointer;
+	padding: 5px;
+	color: white;
+	border: 1px solid cornflowerblue;
+	margin:10px 15px;
+}
+#tup:hover{
+	background-color: darkblue;
+	border: 1px solid darkblue;
+}
+#tdel:hover{
+	background-color: darkblue;
+	border: 1px solid darkblue;
+}
+.parent_log{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.log{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 30px;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px 5px gray;
+	margin-top: 120px;
+	
+}
+.log>form{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.log>form>div>input{
+	width: 400px;
+	height: 40px;
+	margin-top: 20px;
+	padding: 5px;
+}
+.log>form>div>button{
+	
+	width: 80px;
+	height: 35px;
+	background-color: cornflowerblue;
+	cursor: pointer;
+	padding: 5px;
+	color: white;
+	border: 1px solid cornflowerblue;
+	margin:10px 15px;
+	border-radius: 10px;
+}
+.log>form>div>button:hover{
+	background-color: darkblue;
+	border: 1px solid darkblue;
+}
+#lanchor{
+	color: cornflowerblue;
+	text-decoration: underline;
+}
+.log>a{
+	margin-top: 8px;
+}
+#logout{
+	margin-left: 400px;
+	border: 3px solid white;
+	background-color: black;
+	color: white;
+	border-radius: 10px;
+	width: 80px;
+	height: 35px;
+	cursor: pointer;
+	margin-top: -5px;
+}
+#name{
+	font-weight: bold;
+	font-size: 18px;
+	margin-left: 150px;
+	text-decoration: underline;
+}

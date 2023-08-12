@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset = "ISO-8859-1" />
+      <link href = "css/style.css" rel = "stylesheet"/>
+      <title>Login Page</title>
+   </head>
+   <body>
+	 <div class="parent_log">
+		 <div class="log">
+			 <h1>Login here</h1>
+			 <form onsubmit="submitted()">
+			 <div>
+				   <input id="email" type='text'name="name" placeholder="Enter email">
+		     </div>
+		     <div>
+				   <input id="pass" type='password' name="name" placeholder="Enter Password">
+		   	 </div>
+		   	 <div>
+			   <button id="lbut" type="submit">Login</button>
+		     </div>
+		     </form>
+		      <a href="http://localhost:8080/forgotpass" id="lanchor">Forget Password?</a>
+		     <a href="http://localhost:8080/signup" id="lanchor">Donot have Account sign up Here</a>
+		 </div>
+	 </div>
+
+   </body>
+	
+	<script>
+		function submitted(){
+		/* let email = document.getElementById('email').value;
+    let password = document.getElementById('pass').value;
+
+    fetch("user/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `email=${email}&password=${password}`,
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.text();
+        } else {
+            throw new Error('Invalid credentials');
+        }
+    })
+    .then(responseText => {
+        alert(responseText); // Success message from the server
+        let d = localStorage.getItem('email');
+        if (d == null) {
+            localStorage.setItem('email', email);
+        } else {
+            localStorage.removeItem('email');
+            localStorage.setItem('email', email);
+        }
+        window.location.href = "/index";
+    })
+    .catch(error => {
+        alert(error.message);
+    });*/
+    
+    let email = document.getElementById('email').value;
+let password = document.getElementById('pass').value;
+
+fetch("user/all")
+  .then(response => response.json()) // Return the parsed JSON promise
+  .then(data => {
+    let ismatched = false;
+    data.forEach(user => {
+      if (email == user.email && password == user.password) {
+        ismatched = true;
+        return;
+      }
+    })
+    if (ismatched) {
+      let d = localStorage.getItem('email');
+      if (d == null) {
+        localStorage.setItem('email', email);
+      } else {
+        localStorage.removeItem('email');
+        localStorage.setItem('email', email);
+      }
+      window.location.href = "/index";
+    } else {
+      alert("Enter credentials");
+    }
+  })
+  .catch(error => {
+    alert(error.message);
+  });
+
+}
+	
+		
+	</script>
+	   
+</html>
