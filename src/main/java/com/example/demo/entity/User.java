@@ -5,6 +5,10 @@ import jakarta.persistence.Id;
 
 
 @Entity
+
+	// user table
+
+	
 public class User {
 	@Id
 	private String email;
