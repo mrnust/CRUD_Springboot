@@ -23,6 +23,8 @@ import com.example.demo.repository.ProductRepository;
 @RequestMapping(path="/demo")
 public class MainController {
 	@Autowired
+
+	// API creation
 	private ProductRepository p_repository;
 	
 	
@@ -37,13 +39,13 @@ public class MainController {
 		return "saved";
 	}
 	
-	
+	// get request
 	@GetMapping(path="/all")
 	public @ResponseBody  Iterable<Product> getAllProducts(){
 		return p_repository.findAll();
 	}
 	
-	
+	// update request
 	@PutMapping(path="/update/{id}")
 	public @ResponseBody String updateProduct(@PathVariable Integer id, @RequestParam String name, @RequestParam Integer quantity, @RequestParam Double price) {
 	    Optional<Product> optionalProduct = p_repository.findById(id);
@@ -59,7 +61,7 @@ public class MainController {
 	    }
 	}
 	
-	
+	// delete request
 	@DeleteMapping(path="/delete/{id}")
 	public @ResponseBody String deleteProduct(@PathVariable Integer id) {
 	    Optional<Product> optionalProduct = p_repository.findById(id);
