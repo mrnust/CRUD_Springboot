@@ -19,9 +19,13 @@ import com.example.demo.repository.UserRepository;
 @RequestMapping(path="/user")
 public class UserController {
 	@Autowired
+	// API creation
 	private UserRepository u_repository;
 	//@Autowired
     //private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	// Making changings in user table
+	
 	@PostMapping(path="/add")
 	public @ResponseBody String addUser(@RequestParam String email, @RequestParam String password) {
 		User u=new User();
@@ -32,11 +36,13 @@ public class UserController {
 		u_repository.save(u);
 		return "signed up successfully";
 	}
+
+	// Get request
 	@GetMapping(path="/all")
 	public @ResponseBody  Iterable<User> getAllUsers(){
 		return u_repository.findAll();
 	}
-	
+	// Adding data to table
 	@PostMapping(path="/resetpass")
 	public @ResponseBody String updateUser(@RequestParam String email, @RequestParam String password) {
 		User u=u_repository.findByEmail(email);
