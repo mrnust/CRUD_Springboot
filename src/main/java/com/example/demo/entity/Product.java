@@ -6,6 +6,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GenerationType;
 
 @Entity
+
+
+	// Product table
+	
 public class Product {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
