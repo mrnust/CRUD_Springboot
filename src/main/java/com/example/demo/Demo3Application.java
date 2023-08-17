@@ -6,6 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
+
+	// Main file
+	
 public class Demo3Application {
 	/*@Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
